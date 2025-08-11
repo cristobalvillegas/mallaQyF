@@ -12,6 +12,7 @@ function Guardar_datos(){
     window.localStorage.setItem("requisitos-bloqueados",JSON.stringify(lista_requisitos));
     window.localStorage.setItem("requisitos-desbloqueados",JSON.stringify(lista_requisitos_desbloqueados));
 }
+
 function Cargar_Datos(){
     datos = JSON.parse(localStorage.getItem("ramos"));
     requisitos = JSON.parse(localStorage.getItem("requisitos-bloqueados"));
@@ -23,14 +24,12 @@ function Cargar_Datos(){
         lista_requisitos_desbloqueados = requisitos_desbloqueados;
     }
     if (datos) {
-        console.log(ramos);
-        console.log(datos);
         for (i = 0; i < ramos.length; i++){
-            console.log(ramos[i]);
             ramos[i].className = datos[i];
         }
     }
 }
+
 
 let ramos_no_pasados = document.getElementsByClassName("ramo");
 let ramos_bloqueados = document.getElementsByClassName("ramo-bloqueado");
@@ -86,6 +85,7 @@ lista_requisitos = [
     ["Emprendimiento y Gestión de Farmacias Comunitarias","Marketing Farmacéutico y Comunicación Estratégica"]
 ];
 let lista_requisitos_desbloqueados = [];
+
 Cargar_Datos();
 for (i = 0; i < ramos.length;i++){
     if (ramos[i].className == "ramo") {
@@ -95,6 +95,7 @@ for (i = 0; i < ramos.length;i++){
         ramos[i].addEventListener("click",Bloquear_ramo);
     }
 }
+
 function Desbloquea_ramo(e){
     let ramo = e.target;
     ramo.className = "ramo-pasado";
@@ -200,6 +201,9 @@ function Bloquea_ramo(ramo) {
     ramos_bloqueados = document.getElementsByClassName("ramo-bloqueado");
     ramos_pasados = document.getElementsByClassName("ramo-pasado");
 }
+
+
+
 
 
 
