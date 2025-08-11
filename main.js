@@ -15,6 +15,7 @@ function Guardar_datos(){
 
 function Cargar_Datos(){
     datos = JSON.parse(localStorage.getItem("ramos"));
+    console.log(datos);
     requisitos = JSON.parse(localStorage.getItem("requisitos-bloqueados"));
     requisitos_desbloqueados = JSON.parse(localStorage.getItem("requisitos-desbloqueados"));
     if (requisitos) {
@@ -25,6 +26,7 @@ function Cargar_Datos(){
     }
     if (datos) {
         for (i = 0; i < ramos.length; i++){
+            console.log(ramos[i]);
             ramos[i].className = datos[i];
         }
     }
@@ -199,5 +201,6 @@ function Bloquea_ramo(ramo) {
     ramos_bloqueados = document.getElementsByClassName("ramo-bloqueado");
     ramos_pasados = document.getElementsByClassName("ramo-pasado");
 }
+
 
 
