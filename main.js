@@ -4,11 +4,10 @@ ramo_pasado.className = "ramo-pasado";
 
 let ramos = document.querySelectorAll("button");
 function Guardar_datos(){
-    estado = {}
-    ramos.forEach((boton) => {
-        nombre = boton.innerHTML;
-        estado[`${nombre}`] = boton.className;
-    });
+    estado = [];
+    for (i = 0; i < ramos.length; i++){
+        estado.push(ramos[i].className);
+    }
     window.localStorage.setItem("ramos",JSON.stringify(estado));
     window.localStorage.setItem("requisitos-bloqueados",JSON.stringify(lista_requisitos));
     window.localStorage.setItem("requisitos-desbloqueados",JSON.stringify(lista_requisitos_desbloqueados));
@@ -26,7 +25,7 @@ function Cargar_Datos(){
     }
     if (datos) {
         for (i = 0; i < ramos.length; i++){
-            ramos[i].className = datos[ramos[i].innerHTML];
+            ramos[i].className = datos[i];
             if (ramos[i].className == "ramo") {
                 ramos[i].addEventListener("click",Desbloquea_ramo);
             }
@@ -205,4 +204,5 @@ function Bloquea_ramo(ramo) {
     ramos_bloqueados = document.getElementsByClassName("ramo-bloqueado");
     ramos_pasados = document.getElementsByClassName("ramo-pasado");
 }
+
 
