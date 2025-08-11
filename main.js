@@ -26,19 +26,6 @@ function Cargar_Datos(){
     if (datos) {
         for (i = 0; i < ramos.length; i++){
             ramos[i].className = datos[i];
-            if (ramos[i].className == "ramo") {
-                ramos[i].addEventListener("click",Desbloquea_ramo);
-            }
-            if (ramos[i].className == "ramo-pasado") {
-                ramos[i].addEventListener("click",Bloquear_ramo);
-            }
-        }
-    }
-    else {
-        for (i = 0; i < ramos.length; i++){
-            if (ramos[i].className == "ramo"){
-                ramos[i].addEventListener("click",Desbloquea_ramo);
-            }
         }
     }
 }
@@ -99,6 +86,14 @@ lista_requisitos = [
 let lista_requisitos_desbloqueados = [];
 
 Cargar_Datos();
+for (i = 0; i < ramos.length;i++){
+    if (ramos[i].className == "ramo") {
+        ramos[i].addEventListener("click",Desbloquea_ramo);
+    }
+    if (ramos[i].className == "ramo-pasado") {
+        ramos[i].addEventListener("click",Bloquear_ramo);
+    }
+}
 function Desbloquea_ramo(e){
     let ramo = e.target;
     ramo.className = "ramo-pasado";
@@ -204,4 +199,5 @@ function Bloquea_ramo(ramo) {
     ramos_bloqueados = document.getElementsByClassName("ramo-bloqueado");
     ramos_pasados = document.getElementsByClassName("ramo-pasado");
 }
+
 
